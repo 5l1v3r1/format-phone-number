@@ -22,9 +22,31 @@ export function getFullMaskByCountryCode(countryCode) {
   return getCountryDataByCode(countryCode).intlNumberMask;
 }
 
+// TODO: make sure it is correct
+function getNumberOfDigitsInPrefix(intlNumberPrefix) {
+  return intlNumberPrefix.length - 1;
+}
+
+function removeSomeFrontDigitsFromPrefix(numberOfDigits, intlNumberMask) {
+  const maskChar = '#';
+  let i = 0;
+  let numberOfDigitsToRemoveLeft = numberOfDigits;
+  while (i < intlNumberMask.length && numberOfDigitsToRemoveLeft > 0) {
+    if (intlNumberMask[i] === maskChar) {
+      numberOfDigitsToRemoveLeft--;
+    }
+    i++;
+  }
+  while (i < intlNumberMask.length && intlNumberMask[i] === ' ') {
+    i++;
+  }
+  return intlNumberMask.substr(i, intlNumberMask.length - i);
+}
+
 export function getShortMaskByCountryCode(countryCode) {
-  // TODO: implement
-  return getCountryDataByCode(countryCode).intlNumberPrefix;
+  const countryData = getCountryDataByCode(countryCode);
+  const numberOfDigitsInPrefix = getNumberOfDigitsInPrefix(countryData.intlNumberPrefix);
+  return removeSomeFrontDigitsFromPrefix(numberOfDigitsInPrefix, countryData.intlNumberMask);
 }
 
 export function getPrefixByCountryCode(countryCode) {
