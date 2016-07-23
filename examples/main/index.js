@@ -1,14 +1,12 @@
-import { LanguageManager, LanguageKeyEnum } from 'intl-pn-formats';
+import { getFormattedPhoneNumberFull, getFormattedPhoneNumberWithCode } from 'intl-pn-formats';
 
-var languageManager = new LanguageManager(
-  'languageKey',
-  'languagesKey',
-  './locale-data/',
-  window
-);
-languageManager.setLanguages([LanguageKeyEnum.EN, LanguageKeyEnum.KO, LanguageKeyEnum.PL, LanguageKeyEnum.UK]);
-languageManager.initLanguage().then(function(messages) {
-	console.log(messages);
-  console.log(languageManager.getCurrentLanguageName());
-});
-// languageManager.setCurrentLanguage(CardsTranslation.LanguageKeyEnum.UK);
+const phoneNumber = '+380501234567';
+console.log('Original phone number', phoneNumber);
+const formattedValue1 = getFormattedPhoneNumberFull(phoneNumber);
+console.log('Masked phone number', formattedValue1);
+
+const countryCode = '+380';
+const phoneNumberWithoutCountryCode = '501234567';
+console.log('Original phone number', phoneNumber);
+const formattedValue2 = getFormattedPhoneNumberWithCode(countryCode, phoneNumberWithoutCountryCode);
+console.log('Masked phone number', formattedValue2);

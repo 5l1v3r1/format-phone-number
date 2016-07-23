@@ -1,14 +1,5 @@
 import { countriesPhoneData } from './country-phone-data';
-
-function sortByName(countryLeft, countryRight) {
-  if (countryLeft.country > countryRight.country) {
-    return 1;
-  }
-  if (countryLeft.country < countryRight.country) {
-    return -1;
-  }
-  return 0;
-}
+import { sortByName } from './sorting';
 
 export function getAllPhoneData() {
   return countriesPhoneData.sort(sortByName);
