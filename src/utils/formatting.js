@@ -1,4 +1,4 @@
-import InputMask from 'inputmask-core';
+import { addMask } from 'mask-parser';
 import { countriesPhoneData } from './country-phone-data';
 import { sortByIntlNumberPrefixDesc } from './sorting';
 
@@ -51,11 +51,7 @@ export function getFormattedPhoneNumberFull(phoneNumber) {
     return phoneNumber;
   }
   const phoneNumberWithputPlus = getPhoneNumberWithoutPlus(phoneNumber);
-  const mask = new InputMask({
-    pattern: countryData.intlNumberMask,
-    value: phoneNumberWithputPlus,
-  });
-  return mask.getValue();
+  return addMask(phoneNumberWithputPlus, countryData.intlNumberMask);
 }
 
 export function getFormattedPhoneNumberWithCode(intlNumberPrefix, phoneNumber) {
@@ -64,9 +60,5 @@ export function getFormattedPhoneNumberWithCode(intlNumberPrefix, phoneNumber) {
     return phoneNumber;
   }
   const phoneNumberWithputPlus = getPhoneNumberWithoutPlus(`${intlNumberPrefix}${phoneNumber}`);
-  const mask = new InputMask({
-    pattern: countryData.intlNumberMask,
-    value: phoneNumberWithputPlus,
-  });
-  return mask.getValue();
+  return addMask(phoneNumberWithputPlus, countryData.intlNumberMask);
 }
