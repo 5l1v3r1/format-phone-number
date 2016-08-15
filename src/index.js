@@ -19,3 +19,13 @@ export {
   getShortMaskByCountryCode,
   getPrefixByCountryCode,
 };
+
+export default {
+  COUNTRY_CODES,
+  getAllPhoneData,
+  getFormattedPhoneNumberFull,
+  getFormattedPhoneNumberWithCode,
+  getFullMaskByCountryCode,
+  getShortMaskByCountryCode,
+  getPrefixByCountryCode,
+};
