@@ -14,6 +14,27 @@ Using [npm](https://www.npmjs.com/):
 npm install --save intl-pn-formats
 ```
 
+### The Gist
+
+```javascript
+import {
+  getFormattedPhoneNumberFull,
+  getFormattedPhoneNumberWithCode,
+} from 'intl-pn-formats';
+
+const phoneNumber = '+380501234567';
+// '+380 (50) 123-45-67'
+const formattedValue1 = getFormattedPhoneNumberFull(phoneNumber);
+
+const countryCode = '+380';
+const phoneNumberWithoutCountryCode = '501234567';
+// '+380 (50) 123-45-67'
+const formattedValue2 = getFormattedPhoneNumberWithCode(
+  countryCode,
+  phoneNumberWithoutCountryCode
+);
+```
+
 ### Examples
 
 * Main ([source](https://github.com/opensource-cards/intl-pn-formats/tree/master/examples/main))
