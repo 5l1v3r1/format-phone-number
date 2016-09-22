@@ -11,7 +11,7 @@ International phone number formats.
 Using [npm](https://www.npmjs.com/):
 
 ```
-npm install --save intl-pn-formats
+npm install intl-pn-formats --save
 ```
 
 ### The Gist
