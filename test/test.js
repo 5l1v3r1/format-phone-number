@@ -1,5 +1,5 @@
-var assert = require('assert');
-var intlPnFormats = require('../');
+const assert = require('assert');
+const intlPnFormats = require('../');
 
 describe('Masked full phone number', function() {
   it('Should return +380 (50) 123-45-67', function() {

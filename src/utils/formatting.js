@@ -7,7 +7,7 @@ import { sortByIntlNumberPrefixDesc } from './sorting';
  */
 function getAllCountriesDataByIntlNumberPrefix(intlNumberPrefix) {
   const countriesData = [];
-  countriesPhoneData.forEach(countryData => {
+  countriesPhoneData.forEach((countryData) => {
     if (countryData.intlNumberPrefix === intlNumberPrefix) {
       countriesData.push(countryData);
     }
@@ -40,7 +40,7 @@ function getCountryDataByPhoneNumber(phoneNumber) {
     if (phoneNumber.substr(0, countryCodeLength) === countryCode) {
       return countryData;
     }
-    countryIndex++;
+    countryIndex += 1;
   }
   return undefined;
 }

@@ -24,12 +24,12 @@ function removeSomeFrontDigitsFromPrefix(numberOfDigits, intlNumberMask) {
   let numberOfDigitsToRemoveLeft = numberOfDigits;
   while (i < intlNumberMask.length && numberOfDigitsToRemoveLeft > 0) {
     if (intlNumberMask[i] === maskChar) {
-      numberOfDigitsToRemoveLeft--;
+      numberOfDigitsToRemoveLeft -= 1;
     }
-    i++;
+    i += 1;
   }
   while (i < intlNumberMask.length && intlNumberMask[i] === ' ') {
-    i++;
+    i += 1;
   }
   return intlNumberMask.substr(i, intlNumberMask.length - i);
 }

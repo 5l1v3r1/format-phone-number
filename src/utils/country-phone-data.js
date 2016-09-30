@@ -259,3 +259,5 @@ export const countriesPhoneData = [
   { country: COUNTRY_CODES.KG, intlNumberPrefix: '+996', intlNumberMask: '+### (###) ###-###' },
   { country: COUNTRY_CODES.UZ, intlNumberPrefix: '+998', intlNumberMask: '+### (##) ###-####' },
 ];
+
+export default countriesPhoneData;
