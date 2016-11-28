@@ -1,7 +1,7 @@
 {
-  "name": "intl-pn-formats",
-  "version": "0.0.1-rc6",
-  "description": "International phone number formats.",
+  "name": "format-phone-number",
+  "version": "0.0.1-rc.0",
+  "description": "Make correct combination of phone number parts depending on a country.",
   "author": {
     "name": "Rostyslav Khanas",
     "url": "https://github.com/rtkhanas"
@@ -9,8 +9,7 @@
   "scripts": {
     "clean": "rimraf lib",
     "lint": "eslint src",
-    "build": "npm run lint && npm run clean && babel src --out-dir lib && mocha",
-    "start": "cd examples/main && webpack-dev-server --inline --hot"
+    "build": "npm run lint && npm run clean && babel src --out-dir lib && mocha"
   },
   "license": "MIT",
   "files": [
@@ -34,8 +33,6 @@
     "eslint-config-airbnb": "^12.0.0",
     "eslint-plugin-import": "^2.0.0",
     "mocha": "^3.0.2",
-    "rimraf": "^2.5.4",
-    "webpack": "^1.13.2",
-    "webpack-dev-server": "^1.16.1"
+    "rimraf": "^2.5.4"
   }
 }
