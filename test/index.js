@@ -1,19 +1,18 @@
-const assert = require('assert');
-const intlPnFormats = require('../');
+import assert from 'assert';
+import intlPnFormats from '../src';
 
-describe('Masked full phone number', function() {
-  it('Format Ukrainian full number', function() {
-    const formattedValue = intlPnFormats.getFormattedPhoneNumberFull('+380501234567');
-    assert.equal(formattedValue, '+380 (50) 123-45-67');
-  });
-});
+const runFormatMergedNumberTest = (inputNumber, expectedResult) => {
+  const formattedNumber = intlPnFormats.getFormattedPhoneNumberFull(inputNumber);
+  assert.equal(formattedNumber, expectedResult);
+};
 
-describe('Masked phone number with country code', function() {
-  it('Format Ukrainian short number', function() {
-    const formattedValue = intlPnFormats.getFormattedPhoneNumberWithCode(
-      '+380',
-      '501234567'
-    );
-    assert.equal(formattedValue, '+380 (50) 123-45-67');
-  });
+const runFormatSeparatedNumberTest = (inputCountryCode, inputNumber, expectedResult) => {
+  const formattedNumber = intlPnFormats.getFormattedPhoneNumberWithCode(inputCountryCode, inputNumber);
+  assert.equal(formattedNumber, expectedResult);
+};
+
+describe('Format Ukrainian number', function() {
+  const expectedResult = '+380 (50) 123-45-67';
+  it('merged ', () => runFormatMergedNumberTest('+380501234567',expectedResult));
+  it('separated', () => runFormatSeparatedNumberTest('+380', '501234567', expectedResult));
 });
