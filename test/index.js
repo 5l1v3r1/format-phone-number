@@ -12,7 +12,7 @@ const runFormatSeparatedNumberTest = (inputCountryCode, inputNumber, expectedRes
 };
 
 describe('format Korean number', function() {
-  const expectedResult = '+82 10 1234-5678';
+  const expectedResult = '+82 10-1234-5678';
   it('merged ', () => runFormatMergedNumberTest('+821012345678', expectedResult));
   it('separated', () => runFormatSeparatedNumberTest('+82', '1012345678', expectedResult));
 });
