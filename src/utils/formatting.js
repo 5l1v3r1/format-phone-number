@@ -1,22 +1,22 @@
 import { addMask } from 'mask-parser';
-import { countriesPhoneData } from './country-phone-data';
-import { sortByIntlNumberPrefixDesc } from './sorting';
+import { sortByCountryCodeDesc } from './sorting';
+import { countriesPhoneData } from '../data';
 
 /**
  * It is not guarantee that one country code correspond one country.
  */
-function getAllCountriesDataByIntlNumberPrefix(intlNumberPrefix) {
+function getAllCountriesDataByCountryCode(countryCode) {
   const countriesData = [];
   countriesPhoneData.forEach((countryData) => {
-    if (countryData.intlNumberPrefix === intlNumberPrefix) {
+    if (countryData.countryCode === countryCode) {
       countriesData.push(countryData);
     }
   });
   return countriesData;
 }
 
-function getCountryDataByIntlNumberPrefixFirst(intlNumberPrefix) {
-  const countriesData = getAllCountriesDataByIntlNumberPrefix(intlNumberPrefix);
+function getCountryDataByCountryCodeFirst(countryCode) {
+  const countriesData = getAllCountriesDataByCountryCode(countryCode);
   return countriesData[0];
 }
 
@@ -31,11 +31,11 @@ function getPhoneNumberWithoutPlus(phoneNumber) {
  * It is not guarantee that one country code correspond one country. First one will be selected.
  */
 function getCountryDataByPhoneNumber(phoneNumber) {
-  const sortedCountries = countriesPhoneData.sort(sortByIntlNumberPrefixDesc);
+  const sortedCountries = countriesPhoneData.sort(sortByCountryCodeDesc);
   let countryIndex = 0;
   while (sortedCountries.length > countryIndex) {
     const countryData = sortedCountries[countryIndex];
-    const countryCode = countryData.intlNumberPrefix;
+    const countryCode = countryData.countryCode;
     const countryCodeLength = countryCode.length;
     if (phoneNumber.substr(0, countryCodeLength) === countryCode) {
       return countryData;
@@ -45,20 +45,27 @@ function getCountryDataByPhoneNumber(phoneNumber) {
   return undefined;
 }
 
-export function getFormattedPhoneNumberFull(phoneNumber) {
+function getFormattedPhoneNumberFull(phoneNumber) {
   const countryData = getCountryDataByPhoneNumber(phoneNumber);
   if (countryData === undefined) {
     return phoneNumber;
   }
   const phoneNumberWithputPlus = getPhoneNumberWithoutPlus(phoneNumber);
-  return addMask(phoneNumberWithputPlus, countryData.intlNumberMask);
+  return addMask(phoneNumberWithputPlus, countryData.mask);
 }
 
-export function getFormattedPhoneNumberWithCode(intlNumberPrefix, phoneNumber) {
-  const countryData = getCountryDataByIntlNumberPrefixFirst(intlNumberPrefix);
+function getFormattedPhoneNumberWithCode(countryCode, phoneNumber) {
+  const countryData = getCountryDataByCountryCodeFirst(countryCode);
   if (countryData === undefined) {
     return phoneNumber;
   }
-  const phoneNumberWithputPlus = getPhoneNumberWithoutPlus(`${intlNumberPrefix}${phoneNumber}`);
-  return addMask(phoneNumberWithputPlus, countryData.intlNumberMask);
+  const phoneNumberWithputPlus = getPhoneNumberWithoutPlus(`${countryCode}${phoneNumber}`);
+  return addMask(phoneNumberWithputPlus, countryData.mask);
 }
+
+export default (...props) => {
+  if (props.length === 1) {
+    return getFormattedPhoneNumberFull(props[0]);
+  }
+  return getFormattedPhoneNumberWithCode(...props);
+};

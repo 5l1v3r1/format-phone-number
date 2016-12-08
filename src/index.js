@@ -1,31 +1,18 @@
-import * as COUNTRY_CODES from './constants/country-codes';
+import * as ALPHA_2 from './constants/alpha-2';
 import {
-  getAllPhoneData,
-  getFullMaskByCountryCode,
-  getShortMaskByCountryCode,
-  getPrefixByCountryCode,
+  getAllData,
+  getFullMaskByAlpha2,
+  getShortMaskByAlpha2,
+  getCountryCodeByAlpha2,
 } from './utils/api';
-import {
-  getFormattedPhoneNumberFull,
-  getFormattedPhoneNumberWithCode,
-} from './utils/formatting';
+import formatPhoneNumber from './utils/formatting';
 
 export {
-  COUNTRY_CODES,
-  getAllPhoneData,
-  getFormattedPhoneNumberFull,
-  getFormattedPhoneNumberWithCode,
-  getFullMaskByCountryCode,
-  getShortMaskByCountryCode,
-  getPrefixByCountryCode,
+  ALPHA_2,
+  getAllData,
+  getFullMaskByAlpha2,
+  getShortMaskByAlpha2,
+  getCountryCodeByAlpha2,
 };
 
-export default {
-  COUNTRY_CODES,
-  getAllPhoneData,
-  getFormattedPhoneNumberFull,
-  getFormattedPhoneNumberWithCode,
-  getFullMaskByCountryCode,
-  getShortMaskByCountryCode,
-  getPrefixByCountryCode,
-};
+export default formatPhoneNumber;

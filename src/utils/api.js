@@ -1,45 +1,45 @@
-import { countriesPhoneData } from './country-phone-data';
-import { sortByName } from './sorting';
+import { sortByNameDesc } from './sorting';
+import { countriesPhoneData } from '../data';
 
-export function getAllPhoneData() {
-  return countriesPhoneData.sort(sortByName);
+export function getAllData() {
+  return countriesPhoneData.sort(sortByNameDesc);
 }
 
-function getCountryDataByCode(countryCode) {
-  return countriesPhoneData.find(countryData => countryData.country === countryCode);
+function getCountryDataByAlpha2(alpha2) {
+  return countriesPhoneData.find(countryData => countryData.alpha2 === alpha2);
 }
 
-export function getFullMaskByCountryCode(countryCode) {
-  return getCountryDataByCode(countryCode).intlNumberMask;
+export function getFullMaskByAlpha2(alpha2) {
+  return getCountryDataByAlpha2(alpha2).mask;
 }
 
 // TODO: make sure it is correct
-function getNumberOfDigitsInPrefix(intlNumberPrefix) {
-  return intlNumberPrefix.length - 1;
+function getNumberOfDigitsInPrefix(countryCode) {
+  return countryCode.length - 1;
 }
 
-function removeSomeFrontDigitsFromPrefix(numberOfDigits, intlNumberMask) {
+function removeSomeFrontDigitsFromPrefix(numberOfDigits, mask) {
   const maskChar = '#';
   let i = 0;
   let numberOfDigitsToRemoveLeft = numberOfDigits;
-  while (i < intlNumberMask.length && numberOfDigitsToRemoveLeft > 0) {
-    if (intlNumberMask[i] === maskChar) {
+  while (i < mask.length && numberOfDigitsToRemoveLeft > 0) {
+    if (mask[i] === maskChar) {
       numberOfDigitsToRemoveLeft -= 1;
     }
     i += 1;
   }
-  while (i < intlNumberMask.length && intlNumberMask[i] === ' ') {
+  while (i < mask.length && mask[i] === ' ') {
     i += 1;
   }
-  return intlNumberMask.substr(i, intlNumberMask.length - i);
+  return mask.substr(i, mask.length - i);
 }
 
-export function getShortMaskByCountryCode(countryCode) {
-  const countryData = getCountryDataByCode(countryCode);
-  const numberOfDigitsInPrefix = getNumberOfDigitsInPrefix(countryData.intlNumberPrefix);
-  return removeSomeFrontDigitsFromPrefix(numberOfDigitsInPrefix, countryData.intlNumberMask);
+export function getShortMaskByAlpha2(alpha2) {
+  const countryData = getCountryDataByAlpha2(alpha2);
+  const numberOfDigitsInPrefix = getNumberOfDigitsInPrefix(countryData.countryCode);
+  return removeSomeFrontDigitsFromPrefix(numberOfDigitsInPrefix, countryData.mask);
 }
 
-export function getPrefixByCountryCode(countryCode) {
-  return getCountryDataByCode(countryCode).intlNumberPrefix;
+export function getCountryCodeByAlpha2(alpha2) {
+  return getCountryDataByAlpha2(alpha2).countryCode;
 }
