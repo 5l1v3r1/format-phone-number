@@ -1,6 +1,6 @@
 {
   "name": "format-phone-number",
-  "version": "0.0.1-rc.1",
+  "version": "0.0.1-rc.2",
   "description": "Make correct combination of phone number parts depending on a country.",
   "author": {
     "name": "Rostyslav Khanas",

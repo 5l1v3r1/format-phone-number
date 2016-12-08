@@ -11,14 +11,6 @@ const runFormatSeparatedNumberTest = (inputCountryCode, inputNumber, expectedRes
   assert.equal(formattedNumber, expectedResult);
 };
 
-describe('format Canadian & US number', () => {
-  const countryCode = getCountryCodeByAlpha2(ALPHA_2.US);
-  const number = '2014567890';
-  const expectedResult = `${countryCode} (201) 456-7890`;
-  it('merged ', () => runFormatMergedNumberTest(`${countryCode}${number}`, expectedResult));
-  it('separated', () => runFormatSeparatedNumberTest(countryCode, number, expectedResult));
-});
-
 describe('format Belgium number', () => {
   const countryCode = getCountryCodeByAlpha2(ALPHA_2.BE);
   const number = '471234567';
@@ -27,18 +19,106 @@ describe('format Belgium number', () => {
   it('separated', () => runFormatSeparatedNumberTest(countryCode, number, expectedResult));
 });
 
+describe('format British number', () => {
+  const countryCode = getCountryCodeByAlpha2(ALPHA_2.GB);
+  const number = '7078546543';
+  const expectedResult = `${countryCode} 7078 546543`;
+  it('merged ', () => runFormatMergedNumberTest(`${countryCode}${number}`, expectedResult));
+  it('separated', () => runFormatSeparatedNumberTest(countryCode, number, expectedResult));
+});
+
+describe('format Canadian & US number', () => {
+  const countryCode = getCountryCodeByAlpha2(ALPHA_2.US);
+  const number = '2342355678';
+  const expectedResult = `${countryCode} (234) 235-5678`;
+  it('merged ', () => runFormatMergedNumberTest(`${countryCode}${number}`, expectedResult));
+  it('separated', () => runFormatSeparatedNumberTest(countryCode, number, expectedResult));
+});
+
+describe('format Chinese number', () => {
+  const countryCode = getCountryCodeByAlpha2(ALPHA_2.CN);
+  const number = '13077889900';
+  const expectedResult = `${countryCode} 130-7788-9900`;
+  it('merged ', () => runFormatMergedNumberTest(`${countryCode}${number}`, expectedResult));
+  it('separated', () => runFormatSeparatedNumberTest(countryCode, number, expectedResult));
+});
+
+describe('format Franch number', () => {
+  const countryCode = getCountryCodeByAlpha2(ALPHA_2.FR);
+  const number = '633162923';
+  const expectedResult = `${countryCode} 6 33 16 29 23`;
+  it('merged ', () => runFormatMergedNumberTest(`${countryCode}${number}`, expectedResult));
+  it('separated', () => runFormatSeparatedNumberTest(countryCode, number, expectedResult));
+});
+
+describe('format German number', () => {
+  const countryCode = getCountryCodeByAlpha2(ALPHA_2.DE);
+  const number = '17620036229';
+  const expectedResult = `${countryCode} 176 20036229`;
+  it('merged ', () => runFormatMergedNumberTest(`${countryCode}${number}`, expectedResult));
+  it('separated', () => runFormatSeparatedNumberTest(countryCode, number, expectedResult));
+});
+
+describe('format Indian number', () => {
+  const countryCode = getCountryCodeByAlpha2(ALPHA_2.IN);
+  const number = '1234567890';
+  const expectedResult = `${countryCode} 1234-567890`;
+  it('merged ', () => runFormatMergedNumberTest(`${countryCode}${number}`, expectedResult));
+  it('separated', () => runFormatSeparatedNumberTest(countryCode, number, expectedResult));
+});
+
+describe('format Indonesian number', () => {
+  const countryCode = getCountryCodeByAlpha2(ALPHA_2.ID);
+  const number = '82292834234';
+  const expectedResult = `${countryCode} 822-9283-4234`;
+  it('merged ', () => runFormatMergedNumberTest(`${countryCode}${number}`, expectedResult));
+  it('separated', () => runFormatSeparatedNumberTest(countryCode, number, expectedResult));
+});
+
+describe('format Japanese number', () => {
+  const countryCode = getCountryCodeByAlpha2(ALPHA_2.JP);
+  const number = '8027186677';
+  const expectedResult = `${countryCode} 80-2718-6677`;
+  it('merged ', () => runFormatMergedNumberTest(`${countryCode}${number}`, expectedResult));
+  it('separated', () => runFormatSeparatedNumberTest(countryCode, number, expectedResult));
+});
+
 describe('format Korean number', () => {
   const countryCode = getCountryCodeByAlpha2(ALPHA_2.KR);
-  const number = '1012345678';
-  const expectedResult = `${countryCode} 10-1234-5678`;
+  const number = '1073873791';
+  const expectedResult = `${countryCode} 10-7387-3791`;
+  it('merged ', () => runFormatMergedNumberTest(`${countryCode}${number}`, expectedResult));
+  it('separated', () => runFormatSeparatedNumberTest(countryCode, number, expectedResult));
+});
+
+describe('format Polish number', () => {
+  const countryCode = getCountryCodeByAlpha2(ALPHA_2.PL);
+  const number = '601789123';
+  const expectedResult = `${countryCode} 60 178 91 23`;
+  it('merged ', () => runFormatMergedNumberTest(`${countryCode}${number}`, expectedResult));
+  it('separated', () => runFormatSeparatedNumberTest(countryCode, number, expectedResult));
+});
+
+describe('format Russian number', () => {
+  const countryCode = getCountryCodeByAlpha2(ALPHA_2.RU);
+  const number = '4955768754';
+  const expectedResult = `${countryCode} (495) 576-87-54`;
+  it('merged ', () => runFormatMergedNumberTest(`${countryCode}${number}`, expectedResult));
+  it('separated', () => runFormatSeparatedNumberTest(countryCode, number, expectedResult));
+});
+
+describe('format Spanish number', () => {
+  const countryCode = getCountryCodeByAlpha2(ALPHA_2.ES);
+  const number = '176200362';
+  const expectedResult = `${countryCode} 176 200 362`;
   it('merged ', () => runFormatMergedNumberTest(`${countryCode}${number}`, expectedResult));
   it('separated', () => runFormatSeparatedNumberTest(countryCode, number, expectedResult));
 });
 
 describe('format Ukrainian number', () => {
   const countryCode = getCountryCodeByAlpha2(ALPHA_2.UA);
-  const number = '501234567';
-  const expectedResult = `${countryCode} (50) 123-45-67`;
+  const number = '671700636';
+  const expectedResult = `${countryCode} (67) 170-06-36`;
   it('merged ', () => runFormatMergedNumberTest(`${countryCode}${number}`, expectedResult));
   it('separated', () => runFormatSeparatedNumberTest(countryCode, number, expectedResult));
 });
