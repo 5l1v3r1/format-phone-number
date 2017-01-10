@@ -1,5 +1,5 @@
 import { sortByNameDesc } from './sorting';
-import { countriesPhoneData } from '../data';
+import countriesPhoneData from '../data';
 
 export function getAllData() {
   return countriesPhoneData.sort(sortByNameDesc);
@@ -10,10 +10,12 @@ function getCountryDataByAlpha2(alpha2) {
 }
 
 export function getFullMaskByAlpha2(alpha2) {
-  return getCountryDataByAlpha2(alpha2).mask;
+  return getCountryDataByAlpha2(alpha2).masks;
 }
 
-// TODO: make sure it is correct
+/**
+ * Assume all numbers have a "+" character in the beginning.
+ */
 function getNumberOfDigitsInPrefix(countryCode) {
   return countryCode.length - 1;
 }
@@ -37,7 +39,9 @@ function removeSomeFrontDigitsFromPrefix(numberOfDigits, mask) {
 export function getShortMaskByAlpha2(alpha2) {
   const countryData = getCountryDataByAlpha2(alpha2);
   const numberOfDigitsInPrefix = getNumberOfDigitsInPrefix(countryData.countryCode);
-  return removeSomeFrontDigitsFromPrefix(numberOfDigitsInPrefix, countryData.mask);
+  return countryData.masks.map(
+    mask => removeSomeFrontDigitsFromPrefix(numberOfDigitsInPrefix, mask)
+  );
 }
 
 export function getCountryCodeByAlpha2(alpha2) {

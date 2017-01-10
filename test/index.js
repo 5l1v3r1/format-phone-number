@@ -1,5 +1,9 @@
 import assert from 'assert';
-import formatPhoneNumber, { ALPHA_2, getCountryCodeByAlpha2 } from '../src';
+import formatPhoneNumber, {
+  ALPHA_2,
+  getAllData,
+  getCountryCodeByAlpha2,
+} from '../src';
 
 const runFormatMergedNumberTest = (inputNumber, expectedResult) => {
   const formattedNumber = formatPhoneNumber(inputNumber);
@@ -10,6 +14,41 @@ const runFormatSeparatedNumberTest = (inputCountryCode, inputNumber, expectedRes
   const formattedNumber = formatPhoneNumber(inputCountryCode, inputNumber);
   assert.equal(formattedNumber, expectedResult);
 };
+
+describe('all data: masks is an Array and has min 1 record', () => {
+  getAllData().forEach((countryData) => {
+    it(countryData.alpha2, () => {
+      assert.equal(
+        countryData.masks instanceof Array && countryData.masks.length > 0,
+        true
+      );
+    });
+  });
+});
+
+describe('format Austria number (code + 3)', () => {
+  const countryCode = getCountryCodeByAlpha2(ALPHA_2.AT);
+  const number = '650111';
+  const expectedResult = `${countryCode} 650 111`;
+  it('merged ', () => runFormatMergedNumberTest(`${countryCode}${number}`, expectedResult));
+  it('separated', () => runFormatSeparatedNumberTest(countryCode, number, expectedResult));
+});
+
+describe('format Austria number (code + 4)', () => {
+  const countryCode = getCountryCodeByAlpha2(ALPHA_2.AT);
+  const number = '6501111';
+  const expectedResult = `${countryCode} 650 1111`;
+  it('merged ', () => runFormatMergedNumberTest(`${countryCode}${number}`, expectedResult));
+  it('separated', () => runFormatSeparatedNumberTest(countryCode, number, expectedResult));
+});
+
+describe('format Belgium number', () => {
+  const countryCode = getCountryCodeByAlpha2(ALPHA_2.BE);
+  const number = '471234567';
+  const expectedResult = `${countryCode} 471 23 45 67`;
+  it('merged ', () => runFormatMergedNumberTest(`${countryCode}${number}`, expectedResult));
+  it('separated', () => runFormatSeparatedNumberTest(countryCode, number, expectedResult));
+});
 
 describe('format Belgium number', () => {
   const countryCode = getCountryCodeByAlpha2(ALPHA_2.BE);

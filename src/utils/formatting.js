@@ -1,6 +1,6 @@
 import { addMask } from 'mask-parser';
 import { sortByCountryCodeDesc } from './sorting';
-import { countriesPhoneData } from '../data';
+import countriesPhoneData from '../data';
 
 /**
  * It is not guarantee that one country code correspond one country.
@@ -20,7 +20,7 @@ function getCountryDataByCountryCodeFirst(countryCode) {
   return countriesData[0];
 }
 
-function getPhoneNumberWithoutPlus(phoneNumber) {
+function getValueWithoutFirstPlus(phoneNumber) {
   if (phoneNumber[0] === '+') {
     return phoneNumber.substring(1);
   }
@@ -45,13 +45,22 @@ function getCountryDataByPhoneNumber(phoneNumber) {
   return undefined;
 }
 
+function getBestMasked(phoneNumber, masks) {
+  const phoneNumberLength = phoneNumber.length;
+  // get mask with phone number length or first possible
+  const bestMask = masks.find(mask => (
+    getValueWithoutFirstPlus(mask).replace(/ /gi, '').length === phoneNumberLength
+  )) || masks[0];
+  return addMask(phoneNumber, bestMask);
+}
+
 function getFormattedPhoneNumberFull(phoneNumber) {
   const countryData = getCountryDataByPhoneNumber(phoneNumber);
   if (countryData === undefined) {
     return phoneNumber;
   }
-  const phoneNumberWithputPlus = getPhoneNumberWithoutPlus(phoneNumber);
-  return addMask(phoneNumberWithputPlus, countryData.mask);
+  const phoneNumberWithoutPlus = getValueWithoutFirstPlus(phoneNumber);
+  return getBestMasked(phoneNumberWithoutPlus, countryData.masks);
 }
 
 function getFormattedPhoneNumberWithCode(countryCode, phoneNumber) {
@@ -59,8 +68,8 @@ function getFormattedPhoneNumberWithCode(countryCode, phoneNumber) {
   if (countryData === undefined) {
     return phoneNumber;
   }
-  const phoneNumberWithputPlus = getPhoneNumberWithoutPlus(`${countryCode}${phoneNumber}`);
-  return addMask(phoneNumberWithputPlus, countryData.mask);
+  const phoneNumberWithoutPlus = getValueWithoutFirstPlus(`${countryCode}${phoneNumber}`);
+  return getBestMasked(phoneNumberWithoutPlus, countryData.masks);
 }
 
 export default (...props) => {
