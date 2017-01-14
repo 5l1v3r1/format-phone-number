@@ -9,7 +9,7 @@ function getCountryDataByAlpha2(alpha2) {
   return countriesPhoneData.find(countryData => countryData.alpha2 === alpha2);
 }
 
-export function getFullMaskByAlpha2(alpha2) {
+export function getFullMasksByAlpha2(alpha2) {
   return getCountryDataByAlpha2(alpha2).masks;
 }
 
@@ -36,7 +36,7 @@ function removeSomeFrontDigitsFromPrefix(numberOfDigits, mask) {
   return mask.substr(i, mask.length - i);
 }
 
-export function getShortMaskByAlpha2(alpha2) {
+export function getShortMasksByAlpha2(alpha2) {
   const countryData = getCountryDataByAlpha2(alpha2);
   const numberOfDigitsInPrefix = getNumberOfDigitsInPrefix(countryData.countryCode);
   return countryData.masks.map(

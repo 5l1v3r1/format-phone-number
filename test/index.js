@@ -2,6 +2,8 @@ import assert from 'assert';
 import formatPhoneNumber, {
   ALPHA_2,
   getAllData,
+  getFullMasksByAlpha2,
+  getShortMasksByAlpha2,
   getCountryCodeByAlpha2,
 } from '../src';
 
@@ -14,6 +16,15 @@ const runFormatSeparatedNumberTest = (inputCountryCode, inputNumber, expectedRes
   const formattedNumber = formatPhoneNumber(inputCountryCode, inputNumber);
   assert.equal(formattedNumber, expectedResult);
 };
+
+describe('response type', () => {
+  it('getFullMasksByAlpha2 response is array', () => {
+    assert.equal(getFullMasksByAlpha2(ALPHA_2.UA) instanceof Array, true);
+  });
+  it('getShortMasksByAlpha2 response is array', () => {
+    assert.equal(getShortMasksByAlpha2(ALPHA_2.UA) instanceof Array, true);
+  });
+});
 
 describe('all data: masks is an Array and has min 1 record', () => {
   getAllData().forEach((countryData) => {
