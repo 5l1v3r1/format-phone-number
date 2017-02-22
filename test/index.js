@@ -31,7 +31,7 @@ describe('all data: masks is an Array and has min 1 record', () => {
     it(countryData.alpha2, () => {
       assert.equal(
         countryData.masks instanceof Array && countryData.masks.length > 0,
-        true
+        true,
       );
     });
   });

@@ -40,7 +40,7 @@ export function getShortMasksByAlpha2(alpha2) {
   const countryData = getCountryDataByAlpha2(alpha2);
   const numberOfDigitsInPrefix = getNumberOfDigitsInPrefix(countryData.countryCode);
   return countryData.masks.map(
-    mask => removeSomeFrontDigitsFromPrefix(numberOfDigitsInPrefix, mask)
+    mask => removeSomeFrontDigitsFromPrefix(numberOfDigitsInPrefix, mask),
   );
 }
 
