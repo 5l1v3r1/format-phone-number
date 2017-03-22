@@ -7,6 +7,8 @@
 
 Make correct combination of phone number parts depending on a country.
 
+It is really difficult to get the info about possible phone numbers formatting for all countries, so numbers which data is not available here will have an E.123 recommendation formatting.
+
 ### Installation
 
 Using [npm](https://www.npmjs.com/):
