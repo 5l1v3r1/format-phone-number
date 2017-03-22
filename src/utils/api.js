@@ -1,16 +1,19 @@
+import COUNTRY_DATA from '../data';
 import { sortByNameDesc } from './sorting';
-import countriesPhoneData from '../data';
+import getE123Masks from '../utils/e-123-masks';
+import MASK_CHAR from '../constants/mask-char';
 
 export function getAllData() {
-  return countriesPhoneData.sort(sortByNameDesc);
+  return COUNTRY_DATA.sort(sortByNameDesc);
 }
 
 function getCountryDataByAlpha2(alpha2) {
-  return countriesPhoneData.find(countryData => countryData.alpha2 === alpha2);
+  return COUNTRY_DATA.find(countryData => countryData.alpha2 === alpha2);
 }
 
 export function getFullMasksByAlpha2(alpha2) {
-  return getCountryDataByAlpha2(alpha2).masks;
+  const countryData = getCountryDataByAlpha2(alpha2);
+  return countryData.masks || getE123Masks(countryData.countryCode);
 }
 
 /**
@@ -21,11 +24,10 @@ function getNumberOfDigitsInPrefix(countryCode) {
 }
 
 function removeSomeFrontDigitsFromPrefix(numberOfDigits, mask) {
-  const maskChar = '#';
   let i = 0;
   let numberOfDigitsToRemoveLeft = numberOfDigits;
   while (i < mask.length && numberOfDigitsToRemoveLeft > 0) {
-    if (mask[i] === maskChar) {
+    if (mask[i] === MASK_CHAR) {
       numberOfDigitsToRemoveLeft -= 1;
     }
     i += 1;
@@ -39,7 +41,8 @@ function removeSomeFrontDigitsFromPrefix(numberOfDigits, mask) {
 export function getShortMasksByAlpha2(alpha2) {
   const countryData = getCountryDataByAlpha2(alpha2);
   const numberOfDigitsInPrefix = getNumberOfDigitsInPrefix(countryData.countryCode);
-  return countryData.masks.map(
+  const countryMasks = countryData.masks || getE123Masks(countryData.countryCode);
+  return countryMasks.map(
     mask => removeSomeFrontDigitsFromPrefix(numberOfDigitsInPrefix, mask),
   );
 }
