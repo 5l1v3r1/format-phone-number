@@ -1,6 +1,6 @@
 {
   "name": "format-phone-number",
-  "version": "0.0.1-rc.4",
+  "version": "0.0.1-rc.5",
   "description": "Make correct combination of phone number parts depending on a country.",
   "keywords": [
     "format",
