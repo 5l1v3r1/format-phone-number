@@ -1,6 +1,6 @@
 {
   "name": "format-phone-number",
-  "version": "0.0.1-rc.5",
+  "version": "0.0.1",
   "description": "Make correct combination of phone number parts depending on a country.",
   "keywords": [
     "format",
@@ -27,8 +27,7 @@
   ],
   "main": "lib/index.js",
   "dependencies": {
-    "invariant": "^2.2.1",
-    "mask-parser": "^0.0.1-rc.3"
+    "mask-parser": "^0.0.1"
   },
   "devDependencies": {
     "babel": "^6.3.26",
