@@ -1,9 +1,9 @@
 
-export function sortByNameDesc(countryDataLeft, countryDataRight) {
-  if (countryDataLeft.alpha2 > countryDataRight.alpha2) {
+export function sortByCountryNameDesc(countryDataLeft, countryDataRight) {
+  if (countryDataLeft.countryName > countryDataRight.countryName) {
     return 1;
   }
-  if (countryDataLeft.alpha2 < countryDataRight.alpha2) {
+  if (countryDataLeft.countryName < countryDataRight.countryName) {
     return -1;
   }
   return 0;

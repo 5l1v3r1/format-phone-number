@@ -1,4 +1,4 @@
-import MASK_CHAR from '../constants/mask-char';
+import { MASK_CHAR } from '../constants/mask-char';
 
 const PHONE_NUMBER_LENGTH_MIN = 4;
 const PHONE_NUMBER_LENGTH_MAX = 15;

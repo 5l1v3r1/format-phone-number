@@ -5,7 +5,8 @@ import {
   getShortMasksByAlpha2,
   getCountryCodeByAlpha2,
 } from './utils/api';
-import formatPhoneNumber from './utils/formatting';
+
+export { default } from './utils/formatting';
 
 export {
   ALPHA_2,
@@ -14,5 +15,3 @@ export {
   getShortMasksByAlpha2,
   getCountryCodeByAlpha2,
 };
-
-export default formatPhoneNumber;

@@ -1,10 +1,10 @@
 import COUNTRY_DATA from '../data';
-import { sortByNameDesc } from './sorting';
+import { sortByCountryNameDesc } from './sorting';
 import getE123Masks from '../utils/e-123-masks';
-import MASK_CHAR from '../constants/mask-char';
+import { MASK_CHAR } from '../constants/mask-char';
 
 export function getAllData() {
-  return COUNTRY_DATA.sort(sortByNameDesc);
+  return COUNTRY_DATA.sort(sortByCountryNameDesc);
 }
 
 function getCountryDataByAlpha2(alpha2) {

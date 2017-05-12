@@ -75,7 +75,7 @@ const COUNTRY_DATA_WITH_NO_MASKS = [
   { alpha2: ALPHA_2.MR, countryCode: '+222', countryName: 'موريتانيا' },
   { alpha2: ALPHA_2.ML, countryCode: '+223', countryName: 'Mali' },
   { alpha2: ALPHA_2.GN, countryCode: '+224', countryName: 'Guinée' },
-  { alpha2: ALPHA_2.CI, countryCode: '+225', countryName: `Côte d'Ivoire` },
+  { alpha2: ALPHA_2.CI, countryCode: '+225', countryName: 'Côte d\'Ivoire' },
   { alpha2: ALPHA_2.BF, countryCode: '+226', countryName: 'Burkina Faso' },
   { alpha2: ALPHA_2.NE, countryCode: '+227', countryName: 'Niger' },
   { alpha2: ALPHA_2.TG, countryCode: '+228', countryName: 'Togo' },
