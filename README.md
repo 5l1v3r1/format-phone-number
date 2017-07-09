@@ -11,10 +11,8 @@ It is really difficult to get the info about possible phone numbers formatting f
 
 ### Installation
 
-Using [npm](https://www.npmjs.com/):
-
 ```
-npm install format-phone-number --save
+yarn add format-phone-number
 ```
 
 ### License

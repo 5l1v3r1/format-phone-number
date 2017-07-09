@@ -1,6 +1,7 @@
 import assert from 'assert';
 import formatPhoneNumber, {
   ALPHA_2,
+  getAllData,
   getFullMasksByAlpha2,
   getShortMasksByAlpha2,
   getCountryCodeByAlpha2,
@@ -17,6 +18,9 @@ const runFormatSeparatedNumberTest = (inputCountryCode, inputNumber, expectedRes
 };
 
 describe('response type', () => {
+  it('getAllData response is array', () => {
+    assert.equal(getAllData() instanceof Array, true);
+  });
   it('getFullMasksByAlpha2 response is array', () => {
     assert.equal(getFullMasksByAlpha2(ALPHA_2.UA) instanceof Array, true);
   });
@@ -38,14 +42,6 @@ describe('is mask defined', () => {
     const countryCode = getCountryCodeByAlpha2(ALPHA_2.AT);
     const number = '6501111';
     const expectedResult = `${countryCode} 650 1111`;
-    it('merged ', () => runFormatMergedNumberTest(`${countryCode}${number}`, expectedResult));
-    it('separated', () => runFormatSeparatedNumberTest(countryCode, number, expectedResult));
-  });
-
-  describe('format Belgian number', () => {
-    const countryCode = getCountryCodeByAlpha2(ALPHA_2.BE);
-    const number = '471234567';
-    const expectedResult = `${countryCode} 471 23 45 67`;
     it('merged ', () => runFormatMergedNumberTest(`${countryCode}${number}`, expectedResult));
     it('separated', () => runFormatSeparatedNumberTest(countryCode, number, expectedResult));
   });

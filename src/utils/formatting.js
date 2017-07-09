@@ -32,7 +32,8 @@ function getValueWithoutFirstPlus(phoneNumber) {
  * It is not guarantee that one country code correspond one country. First one will be selected.
  */
 function getCountryDataByPhoneNumber(phoneNumber) {
-  const sortedCountries = COUNTRY_DATA.sort(sortByCountryCodeDesc);
+  // NOTE: do not mutate the original array
+  const sortedCountries = [...COUNTRY_DATA].sort(sortByCountryCodeDesc);
   let countryIndex = 0;
   while (sortedCountries.length > countryIndex) {
     const countryData = sortedCountries[countryIndex];
