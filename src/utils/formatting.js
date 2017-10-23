@@ -37,7 +37,7 @@ function getCountryDataByPhoneNumber(phoneNumber) {
   let countryIndex = 0;
   while (sortedCountries.length > countryIndex) {
     const countryData = sortedCountries[countryIndex];
-    const countryCode = countryData.countryCode;
+    const { countryCode } = countryData;
     const countryCodeLength = countryCode.length;
     if (phoneNumber.substr(0, countryCodeLength) === countryCode) {
       return countryData;

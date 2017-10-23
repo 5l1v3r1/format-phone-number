@@ -3,33 +3,86 @@ import * as ALPHA_2 from '../constants/alpha-2';
 const NANP = '+# (###) ###-####';
 
 const COUNTRY_DATA_WITH_MASKS = [
-  { alpha2: ALPHA_2.US, countryCode: '+1', countryName: 'United States', masks: [NANP] },
-  { alpha2: ALPHA_2.CA, countryCode: '+1', countryName: 'Canada', masks: [NANP] },
-  { alpha2: ALPHA_2.AG, countryCode: '+1268', countryName: 'Antigua and Barbuda', masks: [NANP] },
-  { alpha2: ALPHA_2.AI, countryCode: '+1264', countryName: 'Anguilla', masks: [NANP] },
-  { alpha2: ALPHA_2.BB, countryCode: '+1246', countryName: 'Barbados', masks: [NANP] },
-  { alpha2: ALPHA_2.BM, countryCode: '+1441', countryName: 'Bermuda', masks: [NANP] },
-  { alpha2: ALPHA_2.BS, countryCode: '+1242', countryName: 'Bahamas', masks: [NANP] },
-  { alpha2: ALPHA_2.DM, countryCode: '+1767', countryName: 'Dominica', masks: [NANP] },
-  { alpha2: ALPHA_2.DO_1, countryCode: '+1809', countryName: 'Dominican Republic', masks: [NANP] },
-  { alpha2: ALPHA_2.DO_2, countryCode: '+1829', countryName: 'Dominican Republic', masks: [NANP] },
-  { alpha2: ALPHA_2.DO_3, countryCode: '+1849', countryName: 'Dominican Republic', masks: [NANP] },
-  { alpha2: ALPHA_2.GD, countryCode: '+1473', countryName: 'Grenada', masks: [NANP] },
-  { alpha2: ALPHA_2.GU, countryCode: '+1671', countryName: 'Guam', masks: [NANP] },
-  { alpha2: ALPHA_2.JM, countryCode: '+1876', countryName: 'Jamaica', masks: [NANP] },
-  { alpha2: ALPHA_2.KN, countryCode: '+1869', countryName: 'Saint Kitts and Nevis', masks: [NANP] },
-  { alpha2: ALPHA_2.KY, countryCode: '+1345', countryName: 'Cayman Islands', masks: [NANP] },
-  { alpha2: ALPHA_2.LC, countryCode: '+1758', countryName: 'Saint Lucia', masks: [NANP] },
-  { alpha2: ALPHA_2.MS, countryCode: '+1664', countryName: 'Montserrat', masks: [NANP] },
-  { alpha2: ALPHA_2.PR_1, countryCode: '+1787', countryName: 'Puerto Rico', masks: [NANP] },
-  { alpha2: ALPHA_2.PR_2, countryCode: '+1939', countryName: 'Puerto Rico', masks: [NANP] },
-  { alpha2: ALPHA_2.TC, countryCode: '+1649', countryName: 'Turks and Caicos Islands', masks: [NANP] },
-  { alpha2: ALPHA_2.TT, countryCode: '+1868', countryName: 'Trinidad and Tobago', masks: [NANP] },
-  { alpha2: ALPHA_2.VC, countryCode: '+1784', countryName: 'Saint Vincent and the Grenadines', masks: [NANP] },
-  { alpha2: ALPHA_2.VG, countryCode: '+1284', countryName: 'Virgin Islands, British', masks: [NANP] },
-  { alpha2: ALPHA_2.VI, countryCode: '+1340', countryName: 'Virgin Islands, U.S.', masks: [NANP] },
-  { alpha2: ALPHA_2.BE, countryCode: '+32', countryName: 'België', masks: ['+## ### ## ## ##'] },
-  { alpha2: ALPHA_2.AT,
+  {
+    alpha2: ALPHA_2.US, countryCode: '+1', countryName: 'United States', masks: [NANP],
+  },
+  {
+    alpha2: ALPHA_2.CA, countryCode: '+1', countryName: 'Canada', masks: [NANP],
+  },
+  {
+    alpha2: ALPHA_2.AG, countryCode: '+1268', countryName: 'Antigua and Barbuda', masks: [NANP],
+  },
+  {
+    alpha2: ALPHA_2.AI, countryCode: '+1264', countryName: 'Anguilla', masks: [NANP],
+  },
+  {
+    alpha2: ALPHA_2.BB, countryCode: '+1246', countryName: 'Barbados', masks: [NANP],
+  },
+  {
+    alpha2: ALPHA_2.BM, countryCode: '+1441', countryName: 'Bermuda', masks: [NANP],
+  },
+  {
+    alpha2: ALPHA_2.BS, countryCode: '+1242', countryName: 'Bahamas', masks: [NANP],
+  },
+  {
+    alpha2: ALPHA_2.DM, countryCode: '+1767', countryName: 'Dominica', masks: [NANP],
+  },
+  {
+    alpha2: ALPHA_2.DO_1, countryCode: '+1809', countryName: 'Dominican Republic', masks: [NANP],
+  },
+  {
+    alpha2: ALPHA_2.DO_2, countryCode: '+1829', countryName: 'Dominican Republic', masks: [NANP],
+  },
+  {
+    alpha2: ALPHA_2.DO_3, countryCode: '+1849', countryName: 'Dominican Republic', masks: [NANP],
+  },
+  {
+    alpha2: ALPHA_2.GD, countryCode: '+1473', countryName: 'Grenada', masks: [NANP],
+  },
+  {
+    alpha2: ALPHA_2.GU, countryCode: '+1671', countryName: 'Guam', masks: [NANP],
+  },
+  {
+    alpha2: ALPHA_2.JM, countryCode: '+1876', countryName: 'Jamaica', masks: [NANP],
+  },
+  {
+    alpha2: ALPHA_2.KN, countryCode: '+1869', countryName: 'Saint Kitts and Nevis', masks: [NANP],
+  },
+  {
+    alpha2: ALPHA_2.KY, countryCode: '+1345', countryName: 'Cayman Islands', masks: [NANP],
+  },
+  {
+    alpha2: ALPHA_2.LC, countryCode: '+1758', countryName: 'Saint Lucia', masks: [NANP],
+  },
+  {
+    alpha2: ALPHA_2.MS, countryCode: '+1664', countryName: 'Montserrat', masks: [NANP],
+  },
+  {
+    alpha2: ALPHA_2.PR_1, countryCode: '+1787', countryName: 'Puerto Rico', masks: [NANP],
+  },
+  {
+    alpha2: ALPHA_2.PR_2, countryCode: '+1939', countryName: 'Puerto Rico', masks: [NANP],
+  },
+  {
+    alpha2: ALPHA_2.TC, countryCode: '+1649', countryName: 'Turks and Caicos Islands', masks: [NANP],
+  },
+  {
+    alpha2: ALPHA_2.TT, countryCode: '+1868', countryName: 'Trinidad and Tobago', masks: [NANP],
+  },
+  {
+    alpha2: ALPHA_2.VC, countryCode: '+1784', countryName: 'Saint Vincent and the Grenadines', masks: [NANP],
+  },
+  {
+    alpha2: ALPHA_2.VG, countryCode: '+1284', countryName: 'Virgin Islands, British', masks: [NANP],
+  },
+  {
+    alpha2: ALPHA_2.VI, countryCode: '+1340', countryName: 'Virgin Islands, U.S.', masks: [NANP],
+  },
+  {
+    alpha2: ALPHA_2.BE, countryCode: '+32', countryName: 'België', masks: ['+## ### ## ## ##'],
+  },
+  {
+    alpha2: ALPHA_2.AT,
     countryCode: '+43',
     countryName: 'Österreich',
     masks: [
@@ -45,19 +98,45 @@ const COUNTRY_DATA_WITH_MASKS = [
       '+## ### ############',
     ],
   },
-  { alpha2: ALPHA_2.GB, countryCode: '+44', countryName: 'United Kingdom', masks: ['+## #### ######'] },
-  { alpha2: ALPHA_2.CN, countryCode: '+86', countryName: '中国', masks: ['+## ###-####-####'] },
-  { alpha2: ALPHA_2.FR, countryCode: '+33', countryName: 'France', masks: ['+## # ## ## ## ##'] },
-  { alpha2: ALPHA_2.DE, countryCode: '+49', countryName: 'Deutschland', masks: ['+## ### ########'] },
-  { alpha2: ALPHA_2.IN, countryCode: '+91', countryName: 'भारत', masks: ['+## ####-######'] },
-  { alpha2: ALPHA_2.ID, countryCode: '+62', countryName: 'Indonesia', masks: ['+## ###-####-####'] },
-  { alpha2: ALPHA_2.JP, countryCode: '+81', countryName: '日本', masks: ['+## ##-####-####'] },
-  { alpha2: ALPHA_2.KR, countryCode: '+82', countryName: '대한민국', masks: ['+## ##-####-####'] },
-  { alpha2: ALPHA_2.PL, countryCode: '+48', countryName: 'Polska', masks: ['+## ## ### ## ##'] },
-  { alpha2: ALPHA_2.KZ, countryCode: '+7', countryName: 'Қазақстан', masks: ['+# (###) ###-##-##'] },
-  { alpha2: ALPHA_2.RU, countryCode: '+7', countryName: 'Россия', masks: ['+# (###) ###-##-##'] },
-  { alpha2: ALPHA_2.ES, countryCode: '+34', countryName: 'España', masks: ['+## ### ### ###'] },
-  { alpha2: ALPHA_2.UA, countryCode: '+380', countryName: 'Україна', masks: ['+### (##) ###-##-##'] },
+  {
+    alpha2: ALPHA_2.GB, countryCode: '+44', countryName: 'United Kingdom', masks: ['+## #### ######'],
+  },
+  {
+    alpha2: ALPHA_2.CN, countryCode: '+86', countryName: '中国', masks: ['+## ###-####-####'],
+  },
+  {
+    alpha2: ALPHA_2.FR, countryCode: '+33', countryName: 'France', masks: ['+## # ## ## ## ##'],
+  },
+  {
+    alpha2: ALPHA_2.DE, countryCode: '+49', countryName: 'Deutschland', masks: ['+## ### ########'],
+  },
+  {
+    alpha2: ALPHA_2.IN, countryCode: '+91', countryName: 'भारत', masks: ['+## ####-######'],
+  },
+  {
+    alpha2: ALPHA_2.ID, countryCode: '+62', countryName: 'Indonesia', masks: ['+## ###-####-####'],
+  },
+  {
+    alpha2: ALPHA_2.JP, countryCode: '+81', countryName: '日本', masks: ['+## ##-####-####'],
+  },
+  {
+    alpha2: ALPHA_2.KR, countryCode: '+82', countryName: '대한민국', masks: ['+## ##-####-####'],
+  },
+  {
+    alpha2: ALPHA_2.PL, countryCode: '+48', countryName: 'Polska', masks: ['+## ## ### ## ##'],
+  },
+  {
+    alpha2: ALPHA_2.KZ, countryCode: '+7', countryName: 'Қазақстан', masks: ['+# (###) ###-##-##'],
+  },
+  {
+    alpha2: ALPHA_2.RU, countryCode: '+7', countryName: 'Россия', masks: ['+# (###) ###-##-##'],
+  },
+  {
+    alpha2: ALPHA_2.ES, countryCode: '+34', countryName: 'España', masks: ['+## ### ### ###'],
+  },
+  {
+    alpha2: ALPHA_2.UA, countryCode: '+380', countryName: 'Україна', masks: ['+### (##) ###-##-##'],
+  },
 ];
 
 const COUNTRY_DATA_WITH_NO_MASKS = [
