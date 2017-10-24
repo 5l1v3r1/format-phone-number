@@ -114,7 +114,6 @@ export const LC = 'lc';
 export const LI = 'li';
 export const LK = 'lk';
 export const LR = 'lr';
-export const LR = 'lr';
 export const LS = 'ls';
 export const LT = 'lt';
 export const LU = 'lu';

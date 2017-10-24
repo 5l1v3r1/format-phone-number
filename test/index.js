@@ -176,3 +176,25 @@ describe('no mask defined', () => {
     it('separated', () => runFormatSeparatedNumberTest(countryCode, number, expectedResult));
   });
 });
+
+describe('data', () => {
+  it('all data countries are in alpha2', () => {
+    const countiesData = getAllData();
+    const isAllCountriesDataDefined = countiesData
+      .map(c => c.alpha2)
+      .reduce((acc, value) => acc && value !== undefined, true);
+    assert.equal(isAllCountriesDataDefined, true);
+  });
+  it('all alpha2 in data countries', () => {
+    const countiesData = getAllData().map(c => c.alpha2);
+    const isAllCountriesDataDefined = Object.keys(ALPHA_2)
+      .reduce((acc, key) => {
+        const isCountryDefined = countiesData.indexOf(ALPHA_2[key]) !== -1;
+        if (isCountryDefined === false) {
+          console.warn('Country not defined:', key);
+        }
+        return acc && isCountryDefined;
+      }, true);
+    assert.equal(isAllCountriesDataDefined, true);
+  });
+});
