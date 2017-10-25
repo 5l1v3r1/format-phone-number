@@ -3,7 +3,7 @@ import COUNTRY_DATA from '../data';
 import { sortByCountryCodeDesc } from './sorting';
 import getE123Masks from '../utils/e-123-masks';
 
-function getPlainNumber(number) {
+function removeNonDigitAndNonPlusChars(number) {
   return number.replace(/[^0-9+]/g, '');
 }
 
@@ -60,27 +60,27 @@ function getBestMasked(phoneNumber, masks) {
   return addMask(phoneNumber, bestMask);
 }
 
-function getFormattedPhoneNumberFull(unformattedPhoneNumber) {
-  const phoneNumber = getPlainNumber(unformattedPhoneNumber);
-  const countryData = getCountryDataByPhoneNumber(phoneNumber);
+function getFormattedPhoneNumberFull(phoneNumber) {
+  const phoneNumberUnformatted = removeNonDigitAndNonPlusChars(phoneNumber);
+  const countryData = getCountryDataByPhoneNumber(phoneNumberUnformatted);
   if (countryData === undefined) {
-    return phoneNumber;
+    return phoneNumberUnformatted;
   }
-  const phoneNumberWithoutPlus = getValueWithoutFirstPlus(phoneNumber);
+  const phoneNumberWithoutPlus = getValueWithoutFirstPlus(phoneNumberUnformatted);
   return getBestMasked(
     phoneNumberWithoutPlus,
     countryData.masks || getE123Masks(countryData.countryCode),
   );
 }
 
-function getFormattedPhoneNumberWithCode(unformattedCountryCode, unformattedPhoneNumber) {
-  const countryCode = getPlainNumber(unformattedCountryCode);
-  const phoneNumber = getPlainNumber(unformattedPhoneNumber);
-  const countryData = getCountryDataByCountryCodeFirst(countryCode);
+function getFormattedPhoneNumberWithCode(countryCode, phoneNumber) {
+  const countryCodeUnformatted = removeNonDigitAndNonPlusChars(countryCode);
+  const phoneNumberUnformatted = removeNonDigitAndNonPlusChars(phoneNumber);
+  const countryData = getCountryDataByCountryCodeFirst(countryCodeUnformatted);
   if (countryData === undefined) {
-    return phoneNumber;
+    return phoneNumberUnformatted;
   }
-  const phoneNumberWithoutPlus = getValueWithoutFirstPlus(`${countryCode}${phoneNumber}`);
+  const phoneNumberWithoutPlus = getValueWithoutFirstPlus(`${countryCodeUnformatted}${phoneNumberUnformatted}`);
   return getBestMasked(
     phoneNumberWithoutPlus,
     countryData.masks || getE123Masks(countryData.countryCode),

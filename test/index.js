@@ -29,7 +29,7 @@ describe('response type', () => {
   });
 });
 
-describe('is mask defined', () => {
+describe('mask defined, number clean', () => {
   describe('format Austrian number (code + 3)', () => {
     const countryCode = getCountryCodeByAlpha2(ALPHA_2.AT);
     const number = '650111';
@@ -153,6 +153,16 @@ describe('is mask defined', () => {
   describe('format Ukrainian number', () => {
     const countryCode = getCountryCodeByAlpha2(ALPHA_2.UA);
     const number = '671700636';
+    const expectedResult = `${countryCode} (67) 170-06-36`;
+    it('merged ', () => runFormatMergedNumberTest(`${countryCode}${number}`, expectedResult));
+    it('separated', () => runFormatSeparatedNumberTest(countryCode, number, expectedResult));
+  });
+});
+
+describe('mask defined, number dirty', () => {
+  describe('format Ukrainian number', () => {
+    const countryCode = getCountryCodeByAlpha2(ALPHA_2.UA);
+    const number = '(67)170-06-36';
     const expectedResult = `${countryCode} (67) 170-06-36`;
     it('merged ', () => runFormatMergedNumberTest(`${countryCode}${number}`, expectedResult));
     it('separated', () => runFormatSeparatedNumberTest(countryCode, number, expectedResult));
