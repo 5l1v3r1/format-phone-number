@@ -3,6 +3,10 @@ import COUNTRY_DATA from '../data';
 import { sortByCountryCodeDesc } from './sorting';
 import getE123Masks from '../utils/e-123-masks';
 
+function getPlainNumber(number) {
+  return number.replace(/[^0-9+]/g, '');
+}
+
 /**
  * It is not guarantee that one country code correspond one country.
  */
@@ -56,7 +60,8 @@ function getBestMasked(phoneNumber, masks) {
   return addMask(phoneNumber, bestMask);
 }
 
-function getFormattedPhoneNumberFull(phoneNumber) {
+function getFormattedPhoneNumberFull(unformattedPhoneNumber) {
+  const phoneNumber = getPlainNumber(unformattedPhoneNumber);
   const countryData = getCountryDataByPhoneNumber(phoneNumber);
   if (countryData === undefined) {
     return phoneNumber;
@@ -68,7 +73,9 @@ function getFormattedPhoneNumberFull(phoneNumber) {
   );
 }
 
-function getFormattedPhoneNumberWithCode(countryCode, phoneNumber) {
+function getFormattedPhoneNumberWithCode(unformattedCountryCode, unformattedPhoneNumber) {
+  const countryCode = getPlainNumber(unformattedCountryCode);
+  const phoneNumber = getPlainNumber(unformattedPhoneNumber);
   const countryData = getCountryDataByCountryCodeFirst(countryCode);
   if (countryData === undefined) {
     return phoneNumber;
