@@ -1,6 +1,6 @@
 import * as ALPHA_2 from './constants/alpha-2';
 
-export { default } from './utils/formatting';
+export { default, removeNonDigitAndNonPlusChars } from './utils/formatting';
 
 export {
   getAllData,

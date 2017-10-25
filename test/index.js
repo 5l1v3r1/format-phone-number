@@ -5,6 +5,7 @@ import formatPhoneNumber, {
   getFullMasksByAlpha2,
   getShortMasksByAlpha2,
   getCountryCodeByAlpha2,
+  removeNonDigitAndNonPlusChars,
 } from '../src';
 
 const runFormatMergedNumberTest = (inputNumber, expectedResult) => {
@@ -206,5 +207,17 @@ describe('data', () => {
         return acc && isCountryDefined;
       }, true);
     assert.equal(isAllCountriesDataDefined, true);
+  });
+});
+
+describe('removeNonDigitAndNonPlusChars', () => {
+  it('replace non digits', () => {
+    assert.equal(removeNonDigitAndNonPlusChars('(32)4 42234 - 534(53) 564342-422'), '3244223453453564342422');
+  });
+  it('replace non first plus signs', () => {
+    assert.equal(removeNonDigitAndNonPlusChars('3+24 422+34+  534+53 564342 42+2'), '3244223453453564342422');
+  });
+  it('replace all except first plus sign', () => {
+    assert.equal(removeNonDigitAndNonPlusChars('++324 4+2234+  53453 56434+2 422'), '+3244223453453564342422');
   });
 });

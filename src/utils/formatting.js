@@ -3,7 +3,7 @@ import COUNTRY_DATA from '../data';
 import { sortByCountryCodeDesc } from './sorting';
 import getE123Masks from '../utils/e-123-masks';
 
-function removeNonDigitAndNonPlusChars(number) {
+export function removeNonDigitAndNonPlusChars(number) {
   return number.replace(/[^0-9+]|(?!^)\+/g, '');
 }
 
