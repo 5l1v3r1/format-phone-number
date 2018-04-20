@@ -212,7 +212,7 @@ const COUNTRY_DATA_WITH_NO_MASKS = [
   { alpha2: ALPHA_2.JO, countryCode: '+962', countryName: 'الأردن' },
   { alpha2: ALPHA_2.KE, countryCode: '+254', countryName: 'Kenya' },
   { alpha2: ALPHA_2.KG, countryCode: '+996', countryName: 'Кыргызстан' },
-  { alpha2: ALPHA_2.KH, countryCode: '+854', countryName: 'Kâmpŭchéa' },
+  { alpha2: ALPHA_2.KH, countryCode: '+855', countryName: 'Kâmpŭchéa' },
   { alpha2: ALPHA_2.KI, countryCode: '+686', countryName: 'Kiribati' },
   { alpha2: ALPHA_2.KM, countryCode: '+269', countryName: 'Komori' },
   { alpha2: ALPHA_2.KP, countryCode: '+850', countryName: '조선민주주의인민공화국' },
