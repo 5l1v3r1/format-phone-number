@@ -9,6 +9,8 @@ export {
   getCountryCodeByAlpha2,
 } from './utils/api';
 
+export { default as getE123Masks } from './utils/e-123-masks';
+
 export {
   ALPHA_2,
 };

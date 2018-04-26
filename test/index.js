@@ -5,6 +5,7 @@ import formatPhoneNumber, {
   getFullMasksByAlpha2,
   getShortMasksByAlpha2,
   getCountryCodeByAlpha2,
+  getE123Masks,
   removeNonDigitAndNonPlusChars,
 } from '../src';
 
@@ -27,6 +28,36 @@ describe('response type', () => {
   });
   it('getShortMasksByAlpha2 response is array', () => {
     assert.equal(getShortMasksByAlpha2(ALPHA_2.UA) instanceof Array, true);
+  });
+  it('getE123Masks response is array', () => {
+    assert.equal(getE123Masks(ALPHA_2.UA) instanceof Array, true);
+  });
+});
+
+describe('response getFullMasksByAlpha2', () => {
+  it('getFullMasksByAlpha2 ALPHA_2.UA', () => {
+    assert.deepEqual(getFullMasksByAlpha2(ALPHA_2.UA), ['+### (##) ###-##-##']);
+  });
+  it('getFullMasksByAlpha2 pr', () => {
+    assert.deepEqual(getFullMasksByAlpha2('pr'), undefined);
+  });
+});
+
+describe('response getShortMasksByAlpha2', () => {
+  it('getShortMasksByAlpha2 ALPHA_2.UA', () => {
+    assert.deepEqual(getShortMasksByAlpha2(ALPHA_2.UA), ['(##) ###-##-##']);
+  });
+  it('getShortMasksByAlpha2 pr', () => {
+    assert.deepEqual(getShortMasksByAlpha2('pr'), undefined);
+  });
+});
+
+describe('response getE123Masks', () => {
+  it('getE123Masks +380', () => {
+    assert.equal(getE123Masks('+380')[0], '+### ####');
+  });
+  it('getE123Masks +1787', () => {
+    assert.equal(getE123Masks('+1787')[0], '+#### ####');
   });
 });
 

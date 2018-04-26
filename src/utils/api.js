@@ -14,6 +14,9 @@ function getCountryDataByAlpha2(alpha2) {
 
 export function getFullMasksByAlpha2(alpha2) {
   const countryData = getCountryDataByAlpha2(alpha2);
+  if (!countryData) {
+    return undefined;
+  }
   return countryData.masks || getE123Masks(countryData.countryCode);
 }
 
@@ -41,6 +44,9 @@ function removeSomeFrontDigitsFromPrefix(numberOfDigits, mask) {
 
 export function getShortMasksByAlpha2(alpha2) {
   const countryData = getCountryDataByAlpha2(alpha2);
+  if (!countryData) {
+    return undefined;
+  }
   const numberOfDigitsInPrefix = getNumberOfDigitsInPrefix(countryData.countryCode);
   const countryMasks = countryData.masks || getE123Masks(countryData.countryCode);
   return countryMasks.map(mask => removeSomeFrontDigitsFromPrefix(numberOfDigitsInPrefix, mask));
