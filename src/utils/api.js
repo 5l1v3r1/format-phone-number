@@ -53,5 +53,9 @@ export function getShortMasksByAlpha2(alpha2) {
 }
 
 export function getCountryCodeByAlpha2(alpha2) {
+  const countryData = getCountryDataByAlpha2(alpha2);
+  if (!countryData) {
+    return undefined;
+  }
   return getCountryDataByAlpha2(alpha2).countryCode;
 }
