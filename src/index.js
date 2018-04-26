@@ -7,6 +7,7 @@ export {
   getFullMasksByAlpha2,
   getShortMasksByAlpha2,
   getCountryCodeByAlpha2,
+  getCountryDataByAlpha2,
 } from './utils/api';
 
 export { default as getE123Masks } from './utils/e-123-masks';

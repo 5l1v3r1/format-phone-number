@@ -5,6 +5,7 @@ import formatPhoneNumber, {
   getFullMasksByAlpha2,
   getShortMasksByAlpha2,
   getCountryCodeByAlpha2,
+  getCountryDataByAlpha2,
   getE123Masks,
   removeNonDigitAndNonPlusChars,
 } from '../src';
@@ -28,6 +29,9 @@ describe('response type', () => {
   });
   it('getShortMasksByAlpha2 response is array', () => {
     assert.equal(getShortMasksByAlpha2(ALPHA_2.UA) instanceof Array, true);
+  });
+  it('getCountryDataByAlpha2 response is array', () => {
+    assert.equal(typeof getCountryDataByAlpha2(ALPHA_2.UA), 'object');
   });
   it('getE123Masks response is array', () => {
     assert.equal(getE123Masks(ALPHA_2.UA) instanceof Array, true);

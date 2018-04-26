@@ -8,7 +8,7 @@ export function getAllData() {
   return [...COUNTRY_DATA].sort(sortByCountryNameDesc);
 }
 
-function getCountryDataByAlpha2(alpha2) {
+export function getCountryDataByAlpha2(alpha2) {
   return COUNTRY_DATA.find(countryData => countryData.alpha2 === alpha2);
 }
 
