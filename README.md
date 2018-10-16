@@ -1,10 +1,10 @@
 # format-phone-number
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/opensource-cards/format-phone-number.svg)](https://greenkeeper.io/)
-[![Build Status](https://travis-ci.org/opensource-cards/format-phone-number.svg?branch=master)](https://travis-ci.org/opensource-cards/format-phone-number)
+[![Greenkeeper badge](https://badges.greenkeeper.io/andcards/format-phone-number.svg)](https://greenkeeper.io/)
+[![Build Status](https://travis-ci.org/andcards/format-phone-number.svg?branch=master)](https://travis-ci.org/andcards/format-phone-number)
 [![npm package](https://badge.fury.io/js/format-phone-number.svg)](https://www.npmjs.org/package/format-phone-number)
-[![Dependency Status](https://david-dm.org/opensource-cards/format-phone-number.svg)](https://david-dm.org/opensource-cards/format-phone-number)
-[![devDependency Status](https://david-dm.org/opensource-cards/format-phone-number/dev-status.svg)](https://david-dm.org/opensource-cards/format-phone-number#info=devDependencies)
+[![Dependency Status](https://david-dm.org/andcards/format-phone-number.svg)](https://david-dm.org/andcards/format-phone-number)
+[![devDependency Status](https://david-dm.org/andcards/format-phone-number/dev-status.svg)](https://david-dm.org/andcards/format-phone-number#info=devDependencies)
 
 Make correct combination of phone number parts depending on a country.
 
