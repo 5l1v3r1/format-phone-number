@@ -1,6 +1,6 @@
-import COUNTRY_DATA from '../data';
+import getE123Masks from './e-123-masks';
 import { sortByCountryNameDesc } from './sorting';
-import getE123Masks from '../utils/e-123-masks';
+import COUNTRY_DATA from '../data';
 import { MASK_CHAR } from '../constants/mask-char';
 
 export function getAllData() {
